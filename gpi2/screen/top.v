@@ -25,9 +25,9 @@ module top (
 
     wire clk_vga = clocks[0];
     wire hsync, vsync, blank;
-    wire [7:0] red = 8'hff;
-    wire [7:0] green = 8'hff;
-    wire [7:0] blue = 8'hff;
+    wire [5:0] red =   6'h3f;
+    wire [5:0] green = 6'h3f;
+    wire [5:0] blue =  6'h3f;
     wire [9:0] x;
     wire [9:0] y;
 
@@ -64,9 +64,12 @@ module top (
     assign gpio[2] = vsync;
     assign gpio[3] = hsync;
 
-    assign {gpio[27], gpio[26], gpio[25], gpio[24], gpio[23], gpio[22], gpio[21], gpio[20]} = red;
-    assign {gpio[19], gpio[18], gpio[17], gpio[16], gpio[15], gpio[14], gpio[13], gpio[12]} = green;
-    assign {gpio[11], gpio[10], gpio[9],  gpio[8],  gpio[7],  gpio[6],  gpio[5],  gpio[4]} = blue;
+    assign gpio[18] = 1'b1; // Backlight
+    assign gpio[19] = 1'b1;
+
+    assign {gpio[25], gpio[24], gpio[23], gpio[22], gpio[21], gpio[20]} = red;
+    assign {gpio[17], gpio[16], gpio[15], gpio[14], gpio[13], gpio[12]} = green;
+    assign {gpio[9],  gpio[8],  gpio[7],  gpio[6],  gpio[5],  gpio[4]} = blue;
 
 endmodule
 
