@@ -17,7 +17,7 @@ parameter h_total = h_visible + h_front + h_sync + h_back;
 parameter v_visible = 10'd480;
 parameter v_front = 10'd18;
 parameter v_sync = 10'd9;
-parameter v_back = 10'd8;
+parameter v_back = 10'd18;
 parameter v_total = v_visible + v_front + v_sync + v_back;
 
 wire h_active, v_active, visible;
