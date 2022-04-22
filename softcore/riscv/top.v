@@ -10,10 +10,15 @@ pll pll(
     .clki(clk_25mhz),
     .clko(clk)
 );
+
+wire [7:0] led_out;
 attosoc soc(
     .clk(clk),
-    .led(led),
+    .led(led_out),
     .uart_tx(ftdi_rxd),
     .uart_rx(ftdi_txd)
 );
+
+assign led = led_out[3:0];
+
 endmodule

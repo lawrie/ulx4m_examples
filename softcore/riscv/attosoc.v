@@ -26,7 +26,7 @@
 
 module attosoc (
 	input clk,
-	output reg [3:0] led,
+	output reg [7:0] led,
 	output uart_tx,
 	input uart_rx
 );
@@ -91,7 +91,7 @@ module attosoc (
 	always @(posedge clk) begin
 		iomem_ready <= 1'b0;
 	  if (iomem_valid && iomem_wstrb[0] && mem_addr == 32'h 02000000) begin
-	    led <= iomem_wdata[3:0];
+	    led <= iomem_wdata[7:0];
 			iomem_ready <= 1'b1;
 		end
 	end
